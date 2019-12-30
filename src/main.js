@@ -11,6 +11,8 @@ import './common/rem.js'
 Vue.config.productionTip = false
 Vue.use(VueWechatTitle)
 Vue.use(Vant)
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
