@@ -39,6 +39,7 @@
       </ul>
     </div>
     <div class="home-banner">
+      
       <div class="banner-info">
         <p>MENU</p>
         <p>美食榜单</p>

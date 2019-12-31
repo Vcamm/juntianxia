@@ -8,6 +8,9 @@ const VipRegister=()=>import('@/pages/VipRegister')
 const Voucher=()=>import('@/pages/Voucher')
 const Info=()=>import('@/pages/Info')
 const BaojianList=()=>import('@/pages/BaojianList')
+const TopRecommend=()=>import('@/pages/TopRecommend')
+const TopList=()=>import('@/pages/top_recommend/TopList')
+const RecommendList=()=>import('@/pages/top_recommend/RecommendList')
 
 export default [{
   path: '/',
@@ -96,4 +99,23 @@ export default [{
     meta:{
         title:'包间列表'
     }
-}]
+},{
+      path:'/TopRecommend',
+      name:'toprecommend',
+      components:{
+          default:TopRecommend
+      },
+      children: [
+        {
+          path: '/toplist',
+          name: 'toplist',
+          component: TopList
+        },
+        {
+          path: '/recommendlist',
+          name: 'recommendlist',
+          component: RecommendList
+        }
+        ],
+}
+]
