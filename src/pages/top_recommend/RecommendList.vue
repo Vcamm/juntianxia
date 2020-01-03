@@ -181,6 +181,7 @@ export default {
 <style lang="less" scoped>
 .toplist {
   width: 100%;
+  height: 100%;
   background: #eee;
   .icon-img {
     width: 17px;

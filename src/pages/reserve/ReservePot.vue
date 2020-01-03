@@ -1,5 +1,5 @@
 <template>
-  <div class="toplist">
+  <div class="reserve-pot">
 
     <!-- 加载列表 -->
     <van-list
@@ -254,7 +254,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.toplist {
+.reserve-pot {
   width: 100%;
   background: #eee;
   .icon-img {

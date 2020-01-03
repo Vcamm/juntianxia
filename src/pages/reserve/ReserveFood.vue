@@ -1,5 +1,5 @@
 <template>
-  <div class="toplist">
+  <div class="reserve-food">
 
     <!-- 加载列表 -->
     <van-list
@@ -138,81 +138,6 @@
                   </div>
               </van-card>
               <!-- 一个商品卡结束 -->
-              <!-- 一个商品卡 -->
-                <van-card
-                  thumb="../assets/img/caipin.png"
-                >
-                    <div slot="title" class="title">雪花牛肉</div>
-                    <div slot="desc">
-                      <van-rate
-                        v-model="star_val"
-                        allow-half
-                        void-icon="star"
-                        void-color="#eee"
-                        size="14px"
-                      />
-                      <span class="star-num">{{star_val}}分</span>
-                      <span class="sold-num">月售2333</span>
-                    </div>
-                    <div slot="desc" class="desc">
-                      滋养脾胃、补中益气
-                    </div>
-                    <div slot="price" class="price">￥48</div>
-                    <div slot="footer" class="btn-add">
-                      <van-icon name="add-o" size="2rem" color="#FC934D"/>
-                    </div>
-                </van-card>
-                <!-- 一个商品卡结束 -->
-                <!-- 一个商品卡 -->
-                  <van-card
-                    thumb="../assets/img/caipin.png"
-                  >
-                      <div slot="title" class="title">雪花牛肉</div>
-                      <div slot="desc">
-                        <van-rate
-                          v-model="star_val"
-                          allow-half
-                          void-icon="star"
-                          void-color="#eee"
-                          size="14px"
-                        />
-                        <span class="star-num">{{star_val}}分</span>
-                        <span class="sold-num">月售2333</span>
-                      </div>
-                      <div slot="desc" class="desc">
-                        滋养脾胃、补中益气
-                      </div>
-                      <div slot="price" class="price">￥48</div>
-                      <div slot="footer" class="btn-add">
-                        <van-icon name="add-o" size="2rem" color="#FC934D"/>
-                      </div>
-                  </van-card>
-                  <!-- 一个商品卡结束 -->
-                  <!-- 一个商品卡 -->
-                    <van-card
-                      thumb="../assets/img/caipin.png"
-                    >
-                        <div slot="title" class="title">雪花牛肉</div>
-                        <div slot="desc">
-                          <van-rate
-                            v-model="star_val"
-                            allow-half
-                            void-icon="star"
-                            void-color="#eee"
-                            size="14px"
-                          />
-                          <span class="star-num">{{star_val}}分</span>
-                          <span class="sold-num">月售2333</span>
-                        </div>
-                        <div slot="desc" class="desc">
-                          滋养脾胃、补中益气
-                        </div>
-                        <div slot="price" class="price">￥48</div>
-                        <div slot="footer" class="btn-add">
-                          <van-icon name="add-o" size="2rem" color="#FC934D"/>
-                        </div>
-                    </van-card>
-                    <!-- 一个商品卡结束 -->
 
 
     </van-list>
@@ -254,8 +179,9 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.toplist {
+.reserve-food {
   width: 100%;
+  height: 100%;
   background: #eee;
   .icon-img {
     width: 17px;

@@ -1,13 +1,15 @@
 <template>
-  <div class="top-recommend">
-    <van-nav-bar title="美食榜单" :border="false" :fixed="true" :z-index="999">
+  <div class="reserve">
+    <van-nav-bar title="菜品预定" :border="false" :fixed="true" :z-index="999">
       <img src="../assets/img/fanhui.png" alt slot="left" class="icon-img" @click="back" />
       <van-icon name="cart" alt slot="right" color="#333" size="1rem" info="9" @click="toCart" />
     </van-nav-bar>
-    <van-tabs :border="false" line-width="40px" color="#F7692B">
-      <van-tab title="热度排行" to="/toplist">
+    <van-tabs :border="false" line-width="40px" color="#F7692B" v-model="active">
+      <van-tab title="锅底" to="/reserve/reservepot">
       </van-tab>
-      <van-tab title="菜品推荐" to="/recommendlist">
+      <van-tab title="菜品" to="/reserve/reservefood">
+      </van-tab>
+      <van-tab title="甜点饮品" to="/reserve/reservedessert">
       </van-tab>
     </van-tabs>
     <div class="list">
@@ -20,7 +22,7 @@
 export default {
   data() {
       return {
-
+            active: 1  
           };
     },
   methods: {
@@ -49,7 +51,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.top-recommend {
+.reserve {
   width: 100%;
   height: 100%;
   background: #eee;

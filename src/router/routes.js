@@ -8,9 +8,17 @@ const VipRegister=()=>import('@/pages/VipRegister')
 const Voucher=()=>import('@/pages/Voucher')
 const Info=()=>import('@/pages/Info')
 const BaojianList=()=>import('@/pages/BaojianList')
+const BaojianDetail=()=>import('@/pages/BaojianDetail')
 const TopRecommend=()=>import('@/pages/TopRecommend')
-const TopList=()=>import('@/pages/top_recommend/TopList')
-const RecommendList=()=>import('@/pages/top_recommend/RecommendList')
+  const TopList=()=>import('@/pages/top_recommend/TopList')
+  const RecommendList=()=>import('@/pages/top_recommend/RecommendList')
+const SystemNotice=()=>import('@/pages/SystemNotice')
+const Reserve=()=>import('@/pages/Reserve')
+  const ReserveFood=()=>import('@/pages/reserve/ReserveFood')
+  const ReservePot=()=>import('@/pages/reserve/ReservePot')
+  const ReserveDessert=()=>import('@/pages/reserve/ReserveDessert')
+const Cart=()=>import('@/pages/Cart')
+const RoomReserve=()=>import('@/pages/RoomReserve')
 
 export default [{
   path: '/',
@@ -100,6 +108,15 @@ export default [{
         title:'包间列表'
     }
 },{
+    path:'/BaojianDetail',
+    name:'baojiandetail',
+    components:{
+        default:BaojianDetail
+    },
+    meta:{
+        title:'包间详情'
+    }
+},{
       path:'/TopRecommend',
       name:'toprecommend',
       components:{
@@ -116,6 +133,56 @@ export default [{
           name: 'recommendlist',
           component: RecommendList
         }
-        ],
+      ],
+},{
+    path:'/SystemNotice',
+    name:'systemnotice',
+    components:{
+        default:SystemNotice
+    },
+    meta:{
+        title:'系统通知'
+    }
+},{
+      path:'/Reserve',
+      name:'reserve',
+      components:{
+          default:Reserve
+      },
+      children: [
+        {
+          path: '/reserve/ReserveFood',
+          name: 'reservefood',
+          component: ReserveFood
+        },
+        {
+          path: '/reserve/ReservePot',
+          name: 'reservepot',
+          component: ReservePot
+        },
+        {
+          path: '/reserve/ReserveDessert',
+          name: 'reservedessert',
+          component: ReserveDessert
+        }
+      ],
+},{
+    path:'/Cart',
+    name:'cart',
+    components:{
+        default:Cart
+    },
+    meta:{
+        title:'餐车'
+    }
+},{
+    path:'/RoomReserve',
+    name:'roomreserve',
+    components:{
+        default:RoomReserve
+    },
+    meta:{
+        title:'包间预定'
+    }
 }
 ]
