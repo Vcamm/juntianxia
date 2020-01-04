@@ -1,6 +1,6 @@
 <template>
   <div class="cart">
-    <van-nav-bar title="包间预定" :border="false">
+    <van-nav-bar title="餐车" :border="false">
       <img src="../assets/img/fanhui.png" alt slot="left" class="icon-img" @click="back" />
     </van-nav-bar>
     <!-- 菜品列表 -->
