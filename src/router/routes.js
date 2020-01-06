@@ -19,6 +19,7 @@ const Reserve=()=>import('@/pages/Reserve')
   const ReserveDessert=()=>import('@/pages/reserve/ReserveDessert')
 const Cart=()=>import('@/pages/Cart')
 const RoomReserve=()=>import('@/pages/RoomReserve')
+const Rate=()=>import('@/pages/Rate')
 
 export default [{
   path: '/',
@@ -184,5 +185,14 @@ export default [{
     meta:{
         title:'包间预定'
     }
+},{
+    path:'/Rate',
+    name:'rate',
+    components:{
+        default:Rate,
+    meta:{
+        title:'评价订单'
+    },
+  }
 }
 ]
