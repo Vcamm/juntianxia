@@ -5,10 +5,14 @@
           <span>首页</span>
            <img slot="icon" slot-scope="props" :src="props.active ? icon.shouyeActive: icon.shouyeNormal" :class="props.active?'tabbar-img':''"/>
       </van-tabbar-item>
-       <van-tabbar-item name='/order' to="/order">
-          <span>订单</span>
+       <van-tabbar-item name='/reserve' to="/reserve">
+          <span>点餐</span>
            <img slot="icon" slot-scope="props" :src="props.active ? icon.orderActive: icon.orderNormal" :class="props.active?'tabbar-img':''"/>
       </van-tabbar-item>
+	  <van-tabbar-item name='/order' to="/order">
+	      <span>订单</span>
+	       <img slot="icon" slot-scope="props" :src="props.active ? icon.orderActive: icon.orderNormal" :class="props.active?'tabbar-img':''"/>
+	  </van-tabbar-item>
        <van-tabbar-item name='/mine' to="/mine">
           <span>我的</span>
           <img slot="icon" slot-scope="props" :src="props.active ? icon.mineActive: icon.mineNormal" :class="props.active?'tabbar-img':''"/>

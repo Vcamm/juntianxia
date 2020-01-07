@@ -31,10 +31,12 @@
   </div>
 </template>
 <script>
+  import { getMyIndex } from "../requests/index";
+
+  import { Toast } from 'vant';
 export default {
     data(){
         return{
-
         }
     },
     methods:{
@@ -50,6 +52,19 @@ export default {
         toInfo(){
           this.$router.push('/info')
         }
+    },
+    mounted() {
+      // console.log(token);
+      let req={
+      }
+      console.log(req)
+      getMyIndex(req).then(resp=>{
+        console.log(resp);
+        if(resp.data.code == 0){
+        }else{
+            Toast(resp.data.msg);
+        }
+      })
     }
 };
 </script>

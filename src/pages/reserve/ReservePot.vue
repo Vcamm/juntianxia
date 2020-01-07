@@ -1,221 +1,27 @@
 <template>
   <div class="reserve-pot">
 
-    <!-- 加载列表 -->
-    <van-list
-      class="food-list"
-      v-model="loading"
-      :finished="finished"
-      finished-text="没有更多了"
-      @load="onLoad"
-    >
-    <!-- 一个商品卡 -->
-      <van-card
-        thumb="../assets/img/caipin.png"
-      >
-          <div slot="title" class="title">雪花牛肉</div>
-          <div slot="desc">
-            <van-rate
-              v-model="star_val"
-              allow-half
-              void-icon="star"
-              void-color="#eee"
-              size="14px"
-            />
-            <span class="star-num">{{star_val}}分</span>
-            <span class="sold-num">月售2333</span>
-          </div>
-          <div slot="desc" class="desc">
-            滋养脾胃、补中益气
-          </div>
-          <div slot="price" class="price">￥48</div>
-          <div slot="footer" class="btn-add">
-            <van-icon name="add-o" size="2rem" color="#FC934D"/>
-          </div>
-      </van-card>
-      <!-- 一个商品卡结束 -->
-
-      <!-- 一个商品卡 -->
-        <van-card
-          thumb="../assets/img/caipin.png"
-        >
-            <div slot="title" class="title">雪花牛肉</div>
-            <div slot="desc">
-              <van-rate
-                v-model="star_val"
-                allow-half
-                void-icon="star"
-                void-color="#eee"
-                size="14px"
-              />
-              <span class="star-num">{{star_val}}分</span>
-              <span class="sold-num">月售2333</span>
-            </div>
-            <div slot="desc" class="desc">
-              滋养脾胃、补中益气
-            </div>
-            <div slot="price" class="price">￥48</div>
-            <div slot="footer" class="btn-add">
-              <van-icon name="add-o" size="2rem" color="#FC934D"/>
-            </div>
-        </van-card>
-        <!-- 一个商品卡结束 -->
-
-        <!-- 一个商品卡 -->
-          <van-card
-            thumb="../assets/img/caipin.png"
-          >
-              <div slot="title" class="title">雪花牛肉</div>
-              <div slot="desc">
-                <van-rate
-                  v-model="star_val"
-                  allow-half
-                  void-icon="star"
-                  void-color="#eee"
-                  size= "12px"
-                />
-                <span class="star-num">{{star_val}}分</span>
-                <span class="sold-num">月售2333</span>
-              </div>
-              <div slot="desc" class="desc">
-                滋养脾胃、补中益气
-              </div>
-              <div slot="price" class="price">￥48</div>
-              <div slot="footer" class="btn-add">
-                <van-icon name="add-o" size="2rem" color="#FC934D"/>
-              </div>
-          </van-card>
-          <!-- 一个商品卡结束 -->
-
-          <!-- 一个商品卡 -->
-            <van-card
-              thumb="../assets/img/caipin.png"
-            >
-                <div slot="title" class="title">雪花牛肉</div>
-                <div slot="desc">
-                  <van-rate
-                    v-model="star_val"
-                    allow-half
-                    void-icon="star"
-                    void-color="#eee"
-                    size="14px"
-                  />
-                  <span class="star-num">{{star_val}}分</span>
-                  <span class="sold-num">月售2333</span>
-                </div>
-                <div slot="desc" class="desc">
-                  滋养脾胃、补中益气
-                </div>
-                <div slot="price" class="price">￥48</div>
-                <div slot="footer" class="btn-add">
-                  <van-icon name="add-o" size="2rem" color="#FC934D"/>
-                </div>
-            </van-card>
-            <!-- 一个商品卡结束 -->
-
-            <!-- 一个商品卡 -->
-              <van-card
-                thumb="../assets/img/caipin.png"
-              >
-                  <div slot="title" class="title">雪花牛肉</div>
-                  <div slot="desc">
-                    <van-rate
-                      v-model="star_val"
-                      allow-half
-                      void-icon="star"
-                      void-color="#eee"
-                      size="14px"
-                    />
-                    <span class="star-num">{{star_val}}分</span>
-                    <span class="sold-num">月售2333</span>
-                  </div>
-                  <div slot="desc" class="desc">
-                    滋养脾胃、补中益气
-                  </div>
-                  <div slot="price" class="price">￥48</div>
-                  <div slot="footer" class="btn-add">
-                    <van-icon name="add-o" size="2rem" color="#FC934D"/>
-                  </div>
-              </van-card>
-              <!-- 一个商品卡结束 -->
-              <!-- 一个商品卡 -->
-                <van-card
-                  thumb="../assets/img/caipin.png"
-                >
-                    <div slot="title" class="title">雪花牛肉</div>
-                    <div slot="desc">
-                      <van-rate
-                        v-model="star_val"
-                        allow-half
-                        void-icon="star"
-                        void-color="#eee"
-                        size="14px"
-                      />
-                      <span class="star-num">{{star_val}}分</span>
-                      <span class="sold-num">月售2333</span>
-                    </div>
-                    <div slot="desc" class="desc">
-                      滋养脾胃、补中益气
-                    </div>
-                    <div slot="price" class="price">￥48</div>
-                    <div slot="footer" class="btn-add">
-                      <van-icon name="add-o" size="2rem" color="#FC934D"/>
-                    </div>
-                </van-card>
-                <!-- 一个商品卡结束 -->
-                <!-- 一个商品卡 -->
-                  <van-card
-                    thumb="../assets/img/caipin.png"
-                  >
-                      <div slot="title" class="title">雪花牛肉</div>
-                      <div slot="desc">
-                        <van-rate
-                          v-model="star_val"
-                          allow-half
-                          void-icon="star"
-                          void-color="#eee"
-                          size="14px"
-                        />
-                        <span class="star-num">{{star_val}}分</span>
-                        <span class="sold-num">月售2333</span>
-                      </div>
-                      <div slot="desc" class="desc">
-                        滋养脾胃、补中益气
-                      </div>
-                      <div slot="price" class="price">￥48</div>
-                      <div slot="footer" class="btn-add">
-                        <van-icon name="add-o" size="2rem" color="#FC934D"/>
-                      </div>
-                  </van-card>
-                  <!-- 一个商品卡结束 -->
-                  <!-- 一个商品卡 -->
-                    <van-card
-                      thumb="../assets/img/caipin.png"
-                    >
-                        <div slot="title" class="title">雪花牛肉</div>
-                        <div slot="desc">
-                          <van-rate
-                            v-model="star_val"
-                            allow-half
-                            void-icon="star"
-                            void-color="#eee"
-                            size="14px"
-                          />
-                          <span class="star-num">{{star_val}}分</span>
-                          <span class="sold-num">月售2333</span>
-                        </div>
-                        <div slot="desc" class="desc">
-                          滋养脾胃、补中益气
-                        </div>
-                        <div slot="price" class="price">￥48</div>
-                        <div slot="footer" class="btn-add">
-                          <van-icon name="add-o" size="2rem" color="#FC934D"/>
-                        </div>
-                    </van-card>
-                    <!-- 一个商品卡结束 -->
-
-
-    </van-list>
+    <!-- 锅底列表 -->
+    <div class="pot">
+      <div class="img"><img src="../../assets/img/banner-baojian.png" alt=""></div>
+      <div class="detail">
+        <div>
+          <p class="type">鸳鸯锅底</p>
+          <p class="desc">麻而微辣，汤底有料</p>
+          <p class="desc-eng">Hemp and slightly spicy,soup base has material</p>
+          <p pot-choice>红锅：<span>微辣</span></p>
+          <p soup-choice>清汤：
+            <span>菌汤</span>
+            <span>番茄</span>
+            <span>三鲜</span>
+          </p>
+          <p class="price">
+            <span>¥62</span>
+            <span>+</span>
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -289,48 +95,33 @@ export default {
     font-weight: 400;
     color: rgba(153, 153, 153, 1);
   }
-  .food-list{
-    padding:0.4rem;
-    .title{
-      font-size: 1rem;
-      font-weight: bold;
-      margin-top: 15px;
-      margin-bottom: 10px;
-    }
-    .star-num{
-      display: inline-block;
-      width: 2.2rem;
-    }
-    .price{
-      font-size: 1.2rem;
-      color: #FC934D;
-      margin-top: 15px;
-    }
-    .desc{
-      margin-top: 5px;
-      color: #898989;
-    }
-    .btn-add{
-      margin-top: -2rem;
-    }
-    span{
-      color: #666;
-    }
-    .van-card{
-      background: #fff;
-      border-radius: 4px;
-      padding: 8px;
-      padding-bottom: 0;
-      .van-image{
-        border-radius: 4px;
+  img{
+    width: 100%;
+  }
+  .pot{
+    position: relative;
+    width: 94%;
+    left: 3%;
+  }
+  .img{
+    width: 60%;
+    position: absolute;
+  }
+  .detail{
+    position: absolute;
+    width: 80%;
+    right: 0;
+    top: 5%;
+    >div{
+      width: 50%;
+      position: absolute;
+      right: 0;
+      .type{
+        font-size: 1rem;
       }
-      .van-card__thumb{
-        width: 100px;
-        height: 80px;
+      .desc{
+        
       }
-    }
-    .van-card:not(:first-child){
-      margin-top: 6px;
     }
   }
 }

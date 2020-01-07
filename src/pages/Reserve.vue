@@ -13,16 +13,18 @@
       </van-tab>
     </van-tabs>
     <div class="list">
+      <!-- <v-pot></v-pot> -->
       <router-view ></router-view>
     </div>
   </div>
 </template>
 
 <script>
+	import ReservePot from './reserve/ReservePot';
 export default {
   data() {
       return {
-            active: 1  
+            active: 1
           };
     },
   methods: {
@@ -47,6 +49,9 @@ export default {
             }
           }, 500);
         }
+  },
+  components:{
+    'v-pot' : ReservePot
   }
 };
 </script>

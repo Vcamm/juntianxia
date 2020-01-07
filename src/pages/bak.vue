@@ -3,24 +3,7 @@
     <van-nav-bar title="餐车" :border="false">
       <img src="../assets/img/fanhui.png" alt slot="left" class="icon-img" @click="back" />
     </van-nav-bar>
-    <!-- 菜品列表 -->
-    <van-checkbox-group v-model="result">
-      <van-cell-group>
-        <van-cell
-          v-for="(item, index) in list"
-          clickable
-          :key="item"
-          :title="`复选框 ${item}`"
-          @click="toggle(index)"
-        >
-          <van-checkbox
-            :name="item"
-            ref="checkboxes"
-            slot="right-icon"
-          />
-        </van-cell>
-      </van-cell-group>
-    </van-checkbox-group>
+    
   </div>
 </template>
 <script>

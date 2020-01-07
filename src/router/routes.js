@@ -20,6 +20,8 @@ const Reserve=()=>import('@/pages/Reserve')
 const Cart=()=>import('@/pages/Cart')
 const RoomReserve=()=>import('@/pages/RoomReserve')
 const Rate=()=>import('@/pages/Rate')
+const Pay=()=>import('@/pages/Pay')
+const Login=()=>import('@/pages/Login')
 
 export default [{
   path: '/',
@@ -145,28 +147,32 @@ export default [{
         title:'系统通知'
     }
 },{
-      path:'/Reserve',
-      name:'reserve',
-      components:{
-          default:Reserve
-      },
-      children: [
-        {
-          path: '/reserve/ReserveFood',
-          name: 'reservefood',
-          component: ReserveFood
-        },
-        {
-          path: '/reserve/ReservePot',
-          name: 'reservepot',
-          component: ReservePot
-        },
-        {
-          path: '/reserve/ReserveDessert',
-          name: 'reservedessert',
-          component: ReserveDessert
-        }
-      ],
+  path:'/Reserve',
+  name:'reserve',
+  components:{
+      default:Reserve,
+      tabbar:Tabbar,
+  },
+  meta:{
+      title:'订单'
+  },
+  children: [
+    {
+      path: '/reserve/ReserveFood',
+      name: 'reservefood',
+      component: ReserveFood
+    },
+    {
+      path: '/reserve/ReservePot',
+      name: 'reservepot',
+      component: ReservePot
+    },
+    {
+      path: '/reserve/ReserveDessert',
+      name: 'reservedessert',
+      component: ReserveDessert
+    }
+  ],
 },{
     path:'/Cart',
     name:'cart',
@@ -192,6 +198,24 @@ export default [{
         default:Rate,
     meta:{
         title:'评价订单'
+    },
+  }
+},{
+    path:'/Pay',
+    name:'pay',
+    components:{
+        default:Pay,
+    meta:{
+        title:'支付订单'
+    },
+  }
+},{
+    path:'/Login',
+    name:'login',
+    components:{
+        default:Login,
+    meta:{
+        title:'登录'
     },
   }
 }

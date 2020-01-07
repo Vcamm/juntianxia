@@ -7,6 +7,9 @@ import VueWechatTitle from 'vue-wechat-title'
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import './common/rem.js'
+import Api from './requests/api.js'
+
+Vue.prototype.Api = Api;
 
 Vue.config.productionTip = false
 Vue.use(VueWechatTitle)
