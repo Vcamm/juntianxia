@@ -6,22 +6,22 @@
     </van-nav-bar>
     <div class="userinfobox">
       <div class="advatar">
-        <img src alt />
+        <img :src="myData.head_url" alt />
       </div>
-      <p class="username">我会打酱油</p>
+      <p class="username">{{myData.nickname}}</p>
       <div class="vip-icon">
           <img src="../assets/img/huiyuan.png" alt="" @click="toVipres">
       </div>
       <div class="vip-status" @click="toVipres">会员用户</div>
     </div>
-    <van-cell title="余额" value="65.8" size="large"  class="margin-style">
+    <van-cell title="余额" :value="myData.money" size="large"  class="margin-style">
         <img src="../assets/img/yue.png" alt="" class="mine-icon-style" slot="icon">
         <p slot="right-icon" class="tips-style" @click="toVoucher">充值</p>
     </van-cell>
-     <van-cell title="积分" value="128" size="large" >
+     <van-cell title="积分" :value="myData.integral" size="large" >
         <img src="../assets/img/jifen.png" alt="" class="mine-icon-style" slot="icon">
     </van-cell>
-     <van-cell title="卡券" value="3" size="large">
+     <van-cell title="卡券" :value="myData.coupon" size="large">
         <img src="../assets/img/kajuan.png" alt="" class="mine-icon-style" slot="icon">
         <p slot="right-icon" class="tips-style">即将过期</p>
     </van-cell>
@@ -37,6 +37,7 @@
 export default {
     data(){
         return{
+          myData: [],
         }
     },
     methods:{
@@ -54,16 +55,16 @@ export default {
         }
     },
     mounted() {
-      // console.log(token);
       let req={
       }
       console.log(req)
-      getMyIndex(req).then(resp=>{
-        console.log(resp);
-        if(resp.data.code == 0){
-        }else{
-            Toast(resp.data.msg);
-        }
+      this.Api.get('/api/user/myIndex',req)
+      .then(res =>{
+        this.myData = res.data;
+        console.log(this.myData);
+      })
+      .catch(err =>{
+        console.log(err)
       })
     }
 };
@@ -87,7 +88,7 @@ export default {
     .advatar {
       width: 136px;
       height: 136px;
-      background: blue;
+      background: #ccc;
       float: left;
       margin-left: 30px;
       margin-top: 12px;

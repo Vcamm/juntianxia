@@ -13,10 +13,9 @@
         />-->
       </van-nav-bar>
       <van-swipe :autoplay="3000" indicator-color="white" class="swipe">
-        <van-swipe-item>1</van-swipe-item>
-        <van-swipe-item>2</van-swipe-item>
-        <van-swipe-item>3</van-swipe-item>
-        <van-swipe-item>4</van-swipe-item>
+        <van-swipe-item v-for="item in bannerImg">
+          <img :src="item.ad_url" alt="">
+        </van-swipe-item>
       </van-swipe>
 
       <ul class="home-choose-box">
@@ -24,7 +23,7 @@
           <img src="../assets/img/caipin.png" alt/>
           <span>包间预约</span>
         </li>
-        <li>
+        <li @click="toReserve">
           <img src="../assets/img/baojian.png" alt />
           <span>菜品预定</span>
         </li>
@@ -33,13 +32,15 @@
           <span>一键导航</span>
         </li>
         <li>
-          <img src="../assets/img/goutong.png" alt />
+          <a :href="'tel:'+shopTel" style="font-size: 0;">
+            <img src="../assets/img/goutong.png" alt/>
+          </a>
           <span>一键沟通</span>
         </li>
       </ul>
     </div>
     <div class="home-banner">
-      
+
       <div class="banner-info">
         <p>MENU</p>
         <p>美食榜单</p>
@@ -54,13 +55,13 @@
       <div class="swiper-wrapper">
         <div
           class="swiper-slide"
-          v-for="(item,index) in imgs"
+          v-for="(item,index) in baojianList"
           :key="index"
           @click="toBaojian(item)"
         >
-          <img class="swiper-img" :src="item.src" />
+          <img class="swiper-img" :src="item.private_url" />
           <p class="swiper-title">
-            {{item.title}}
+            {{item.private_name}}
             <span>可预订</span>
           </p>
         </div>
@@ -74,7 +75,12 @@ import "swiper/dist/css/swiper.min.css";
 export default {
   data() {
     return {
-      imgs: [
+      // 首页数据
+      homeData:{},
+      bannerImg:[],
+      shopTel: "",
+      // baojianList:[],
+      baojianList: [
         {
           title: "包间1",
           src: require("../assets/img/banner-baojian.png")
@@ -91,14 +97,41 @@ export default {
           title: "包间4",
           src: require("../assets/img/banner-baojian.png")
         }
-      ]
+      ],
     };
   },
-  created() {},
+  methods: {
+    toInfo() {
+      this.$router.push("/info");
+    },
+    toBaojian(item) {
+      console.log(item);
+    },
+    toBaojianList(e){
+       console.log(e.target.tagName)
+       if(e.target.tagName=='IMG'||e.target.tagName=='SPAN'){
+           this.$router.push('/baojianlist')
+       }
+    },
+    getHomeData(){
+      this.Api.get('/api/user/home')
+      .then(res =>{
+        console.log(res)
+      })
+      .catch(err =>{
+        console.log(err)
+      })
+    },
+    toReserve(){
+      this.$router.push("/reserve/reservefood");
+    }
+  },
+  created() {
+  },
   mounted() {
     var swiper = new Swiper(".swiper-container", {
       effect: "coverflow",
-      loop: true,
+      loop: false,
       grabCursor: true,
       centeredSlides: true,
       slidesPerView: "auto",
@@ -113,21 +146,20 @@ export default {
       },
       spaceBetween: 50
     });
+    this.Api.get('/api/index/home')
+    .then(res =>{
+      console.log(res);
+      this.bannerImg = res.data.banner;
+      this.baojianList = res.data.optimum;
+      this.shopTel = res.data.tel;
+      console.log(this.baojianList);
+      console.log(this.shopTel);
+    })
+    .catch(err =>{
+      console.log(err)
+    })
   },
-  methods: {
-    toInfo() {
-      this.$router.push("/info");
-    },
-    toBaojian(item) {
-      console.log(item);
-    },
-    toBaojianList(e){
-       console.log(e.target.tagName)
-       if(e.target.tagName=='IMG'||e.target.tagName=='SPAN'){
-           this.$router.push('/baojianlist')
-       }
-    }
-  }
+
 };
 </script>
 <style lang="less" scoped>
@@ -160,6 +192,9 @@ export default {
     .swipe {
       width: 100%;
       height: 100%;
+      img{
+        width: 100%;
+      }
     }
 
     .home-choose-box {

@@ -4,69 +4,58 @@
       <van-icon name="arrow-left" slot="left" color="#fff" @click="back" />
     </van-nav-bar>
     <div class="baojian-img">
-      <img src="../assets/img/banner-baojian.png" alt="包间图片加载中..">
+      <img :src="roomInfo.private_url" alt="包间图片加载中..">
     </div>
     <!-- 内容 -->
     <div class="content-box">
       <div class="info">
         <p>
-          <span class="name">霁影轩</span>
-          <span class="sold-count">月售37</span>
+          <span class="name">{{roomInfo.private_name}}</span>
+          <span class="sold-count">月售{{roomInfo.num}}</span>
         </p>
         <p class="detail">
           <van-rate
-            v-model="starVal"
+            v-model="roomInfo.score"
             allow-half
             void-icon="star"
             void-color="#eee"
             size="12"
           />
-          <span>{{starVal}}分</span>
-          <span>面积:{{space}}m²</span>
-          <span>座位数：{{seats}}</span>
+          <span>{{roomInfo.score}}分</span>
+          <span>面积:{{roomInfo.private_size}}m²</span>
+          <span>座位数：{{roomInfo.private_seat}}</span>
         </p>
         <van-divider />
         <!-- 包间图片列表 -->
         <div class="img-list">
           <van-swipe :loop="false" :width="100" :height="80" :show-indicators="false">
-            <van-swipe-item>
-              <img src="../assets/img/active2.jpg" alt="">
-            </van-swipe-item>
-            <van-swipe-item>
-              <img src="../assets/img/active2.jpg" alt="">
-            </van-swipe-item>
-            <van-swipe-item>
-              <img src="../assets/img/active2.jpg" alt="">
-            </van-swipe-item>
-            <van-swipe-item>
-              <img src="../assets/img/active2.jpg" alt="">
-            </van-swipe-item>
+            <ul>
+              <li v-for="item in roomInfo.imgArr">
+                <van-swipe-item>
+                  <img :src="item" alt="">
+                </van-swipe-item>
+              </li>
+            </ul>
           </van-swipe>
         </div>
       </div>
       <div class="desc">
         <p class="title">包间描述</p>
         <van-divider />
-        <div class="desc-content">发开发诞节快乐发动机萨克雷了的撒伽伽高大上</div>
+        <div class="desc-content">{{roomInfo.remarks}}</div>
       </div>
       <div class="like">
         <p class="title">猜你喜欢
-          <van-icon name="arrow" size="12"class="to-baojianlist"/>
+          <van-icon name="arrow" size="12"class="to-baojianlist" @click="toBaojianList" />
         </p>
         <van-divider />
         <van-grid :border="false" :column-num="3" :gutter="2">
-          <van-grid-item>
-            <van-image src="https://img.yzcdn.cn/vant/apple-1.jpg" />
-          </van-grid-item>
-          <van-grid-item>
-            <van-image src="https://img.yzcdn.cn/vant/apple-2.jpg" />
-          </van-grid-item>
-          <van-grid-item>
-            <van-image src="https://img.yzcdn.cn/vant/apple-3.jpg" />
+          <van-grid-item v-for="item in likeList" @click="getData(item.id)">
+            <van-image :src="item.private_url" />
           </van-grid-item>
         </van-grid>
       </div>
-      <div class="btn-reserve">立即预约</div>
+      <div class="btn-reserve" @click="toReserve">立即预约</div>
     </div>
   </div>
 </template>
@@ -76,14 +65,43 @@ export default {
     return {
       starVal: 2.5,
       space: 50,
-      seats: 20
+      seats: 20,
+      roomInfo: [],
+      likeList:[],
     };
   },
   methods: {
     back() {
       this.$router.back(-1);
+    },
+    getData(roomid){
+      // var roomID = localStorage.getItem('roomID');
+      // console.log(roomID);
+      let req = {
+         id: roomid
+      };
+      this.Api.get('api/room/roomInfo',req)
+      .then(res =>{
+        this.roomInfo = res.data.roomInfo;
+        this.likeList = res.data.like;
+        console.log(this.roomInfo);
+        console.log(this.likeList);
+       })
+      .catch(err =>{
+        console.log(err)
+        })
+    },
+    toBaojianList(){
+      this.$router.push('/baojianlist');
+    },
+    toReserve(){
+      this.$router.push('/reserve/reservefood');
+    },
+  },
+  mounted() {
+    var id = localStorage.getItem('roomID');
+    this.getData(id);
     }
-  }
 };
 </script>
 <style lang="less" scoped>

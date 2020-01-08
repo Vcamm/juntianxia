@@ -60,12 +60,18 @@ export default {
       //       Toast(resp.data.msg);
       //   }
       // })
-      this.Api.post('/api/user/login',req)
+      this.Api.post('/api/user_login/login',req)
       .then(res =>{
         console.log(res)
+        if(res.code==0){
+          localStorage.setItem('token',JSON.stringify(res.data.token));
+          this.$router.push('/mine');
+        }else{
+          Toast(res.msg);
+        }
       })
       .catch(err =>{
-        console.log(err)
+        console.log(err);
       })
     },
     // 获取验证码
@@ -100,7 +106,28 @@ export default {
         // });
         this.Api.get('api/index/getMobileCode',req)
         .then(res =>{
-          console.log(res)
+          console.log(res);
+            this.codeStatus = false;
+            if(res.code==0){
+              Toast('短信已发送至您的手机，请注意查收');
+              const TIME_count = 60;
+              this.count = TIME_count;
+              this.timer = window.setInterval(() => {
+                if (this.count > 0 && this.count <= TIME_count) {
+                  this.codeStatus = true;
+                  this.count--;
+                  this.content = this.count + "s后重新获取";
+                } else {
+                  this.codeStatus = false;
+                  this.content = "获取验证码";
+                  clearInterval(this.timer);
+                  this.timer = null;
+                }
+              }, 1000);
+            }else{
+              Toast(res.msg);
+              this.codeStatus=false;
+            }
         })
         .catch(err =>{
           console.log(err)

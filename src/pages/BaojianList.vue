@@ -1,54 +1,25 @@
+
+
 <template>
   <div class="list">
     <van-nav-bar title="包间列表" :border="false">
       <img src="../assets/img/fanhui.png" alt slot="left" class="icon-img" @click="back" />
     </van-nav-bar>
     <ul class="list-baojian">
-      <li>
+      <li v-for="(item,key) in list" @click="toBaojianDetail(item.id)">
         <div class="list-img">
-            <img src="../assets/img/active2.jpg" alt="">
+            <img :src="item.private_url" alt="">
         </div>
         <div class="list-info">
-          <p>绛雪轩</p>
-          <van-rate v-model="start" allow-half readonly size="10px" class="list-rate" />
-          <span>4.5分</span>
+          <p>{{item.private_name}}</p>
+          <van-rate v-model="item.score" allow-half readonly size="10px" class="list-rate" />
+          <span>{{item.score}}分</span>
         </div>
         <div class="list-detail">
           <p>面积：50m²</p>
           <p>座位数：20</p>
         </div>
       </li>
-
-        <li>
-        <div class="list-img">
-            <img src="../assets/img/active2.jpg" alt="">
-        </div>
-        <div class="list-info">
-          <p>绛雪轩</p>
-          <van-rate v-model="start" allow-half readonly size="10px" class="list-rate" />
-          <span>4.5分</span>
-        </div>
-        <div class="list-detail">
-          <p>面积：50m²</p>
-          <p>座位数：20</p>
-        </div>
-      </li>
-
-        <li>
-        <div class="list-img">
-            <img src="../assets/img/active2.jpg" alt="">
-        </div>
-        <div class="list-info">
-          <p>绛雪轩</p>
-          <van-rate v-model="start" allow-half readonly size="10px" class="list-rate" />
-          <span>4.5分</span>
-        </div>
-        <div class="list-detail">
-          <p>面积：50m²</p>
-          <p>座位数：20</p>
-        </div>
-      </li>
-
 
     </ul>
   </div>
@@ -57,13 +28,35 @@
 export default {
   data() {
     return {
-      start: 4.5
+      list: [],
     };
   },
   methods: {
     back() {
       this.$router.back(-1);
+    },
+    getList(){
+      let req = {
+        page: 1,
+        list_rows: 10
+      };
+      this.Api.post('/api/room/roomList')
+      .then(res =>{
+        this.list = res.data.data
+        console.log(this.list);
+      })
+      .catch(err =>{
+        console.log(err)
+      })
+    },
+    toBaojianDetail(id){
+      console.log(id);
+      localStorage.setItem('roomID',id);
+      this.$router.push('/baojiandetail');
     }
+  },
+  mounted() {
+    this.getList();
   }
 };
 </script>

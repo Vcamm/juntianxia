@@ -5,7 +5,7 @@
           <span>首页</span>
            <img slot="icon" slot-scope="props" :src="props.active ? icon.shouyeActive: icon.shouyeNormal" :class="props.active?'tabbar-img':''"/>
       </van-tabbar-item>
-       <van-tabbar-item name='/reserve' to="/reserve">
+       <van-tabbar-item name='/reserve' to="/reserve/reservefood">
           <span>点餐</span>
            <img slot="icon" slot-scope="props" :src="props.active ? icon.orderActive: icon.orderNormal" :class="props.active?'tabbar-img':''"/>
       </van-tabbar-item>

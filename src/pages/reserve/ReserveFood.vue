@@ -11,9 +11,10 @@
     >
     <!-- 一个商品卡 -->
       <van-card
-        thumb="../assets/img/caipin.png"
+        :thumb="item.goods_url"
+        v-for="item in list"
       >
-          <div slot="title" class="title">雪花牛肉</div>
+          <div slot="title" class="title">{{item.goods_name}}</div>
           <div slot="desc">
             <van-rate
               v-model="star_val"
@@ -26,119 +27,14 @@
             <span class="sold-num">月售2333</span>
           </div>
           <div slot="desc" class="desc">
-            滋养脾胃、补中益气
+            {{item.remarks}}
           </div>
-          <div slot="price" class="price">￥48</div>
+          <div slot="price" class="price">￥{{item.price}}</div>
           <div slot="footer" class="btn-add">
             <van-icon name="add-o" size="2rem" color="#FC934D"/>
           </div>
       </van-card>
       <!-- 一个商品卡结束 -->
-
-      <!-- 一个商品卡 -->
-        <van-card
-          thumb="../assets/img/caipin.png"
-        >
-            <div slot="title" class="title">雪花牛肉</div>
-            <div slot="desc">
-              <van-rate
-                v-model="star_val"
-                allow-half
-                void-icon="star"
-                void-color="#eee"
-                size="14px"
-              />
-              <span class="star-num">{{star_val}}分</span>
-              <span class="sold-num">月售2333</span>
-            </div>
-            <div slot="desc" class="desc">
-              滋养脾胃、补中益气
-            </div>
-            <div slot="price" class="price">￥48</div>
-            <div slot="footer" class="btn-add">
-              <van-icon name="add-o" size="2rem" color="#FC934D"/>
-            </div>
-        </van-card>
-        <!-- 一个商品卡结束 -->
-
-        <!-- 一个商品卡 -->
-          <van-card
-            thumb="../assets/img/caipin.png"
-          >
-              <div slot="title" class="title">雪花牛肉</div>
-              <div slot="desc">
-                <van-rate
-                  v-model="star_val"
-                  allow-half
-                  void-icon="star"
-                  void-color="#eee"
-                  size= "12px"
-                />
-                <span class="star-num">{{star_val}}分</span>
-                <span class="sold-num">月售2333</span>
-              </div>
-              <div slot="desc" class="desc">
-                滋养脾胃、补中益气
-              </div>
-              <div slot="price" class="price">￥48</div>
-              <div slot="footer" class="btn-add">
-                <van-icon name="add-o" size="2rem" color="#FC934D"/>
-              </div>
-          </van-card>
-          <!-- 一个商品卡结束 -->
-
-          <!-- 一个商品卡 -->
-            <van-card
-              thumb="../assets/img/caipin.png"
-            >
-                <div slot="title" class="title">雪花牛肉</div>
-                <div slot="desc">
-                  <van-rate
-                    v-model="star_val"
-                    allow-half
-                    void-icon="star"
-                    void-color="#eee"
-                    size="14px"
-                  />
-                  <span class="star-num">{{star_val}}分</span>
-                  <span class="sold-num">月售2333</span>
-                </div>
-                <div slot="desc" class="desc">
-                  滋养脾胃、补中益气
-                </div>
-                <div slot="price" class="price">￥48</div>
-                <div slot="footer" class="btn-add">
-                  <van-icon name="add-o" size="2rem" color="#FC934D"/>
-                </div>
-            </van-card>
-            <!-- 一个商品卡结束 -->
-
-            <!-- 一个商品卡 -->
-              <van-card
-                thumb="../assets/img/caipin.png"
-              >
-                  <div slot="title" class="title">雪花牛肉</div>
-                  <div slot="desc">
-                    <van-rate
-                      v-model="star_val"
-                      allow-half
-                      void-icon="star"
-                      void-color="#eee"
-                      size="14px"
-                    />
-                    <span class="star-num">{{star_val}}分</span>
-                    <span class="sold-num">月售2333</span>
-                  </div>
-                  <div slot="desc" class="desc">
-                    滋养脾胃、补中益气
-                  </div>
-                  <div slot="price" class="price">￥48</div>
-                  <div slot="footer" class="btn-add">
-                    <van-icon name="add-o" size="2rem" color="#FC934D"/>
-                  </div>
-              </van-card>
-              <!-- 一个商品卡结束 -->
-
 
     </van-list>
   </div>
@@ -174,7 +70,23 @@ export default {
               this.finished = true;
             }
           }, 500);
-        }
+    },
+    getList(){
+      let req = {
+              };
+      this.Api.post('api/goods/lists',req)
+          .then(res =>{
+            this.list = res.data.data;
+            console.log(this.list);
+         })
+          .catch(err =>{
+            console.log(err)
+          })
+
+    },
+  },
+  mounted() {
+    this.getList();
   }
 };
 </script>
